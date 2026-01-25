@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Mi Princesa 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* prevent scroll on mobile */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  touch-action: none;
+  min-height: 100vh;
+  /* Moonlight gradient */
+  background: linear-gradient(180deg, #2c3e50 0%, #4b6cb7 50%, #2a2a72 100%);
+  color: white;
+  position: relative;
+}
+
+#moon {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #fff 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#score {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  color: #fff;
+  background: rgba(0,0,0,0.3);
+  padding: 8px 14px;
+  border-radius: 12px;
+  z-index: 2;
+}
+
+#compliment {
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 6px #000;
+  z-index: 2;
+}
+
+#basket {
+  position: fixed;
+  bottom: 20px;
+  font-size: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 0.1s;
+  z-index: 2;
+}
+
+.basket-hit {
+  transform: translateX(-50%) scale(1.2);
+}
+
+.heart {
+  position: absolute;
+  font-size: 30px;
+  animation: fall 5s linear forwards;
+  z-index: 1;
+}
+
+@keyframes fall {
+  from { top: -50px; }
+  to { top: 100vh; }
+}
+
+.spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: pink;
+  border-radius: 50%;
+  animation: sparkMove 0.5s ease-out forwards;
+  z-index: 3;
+}
+
+@keyframes sparkMove {
+  to {
+    transform: translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+
+#finalMessage {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.9);
+  color: white;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 120px;
+  font-size: 24px;
+  line-height: 1.5;
+  text-shadow: 2px 2px 6px #000;
+  z-index: 5;
+}
+
+#playBtn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #ff5e78;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 18px;
+  font-size: 14px;
+  z-index: 2;
+}
+</style>
+</head>
+
+<body>
+
+<div id="moon"></div>
+
+<div id="score">Puntaje: 0</div>
+<div id="compliment"></div>
+<div id="basket">🧺</div>
+<button id="playBtn" onclick="playMusic()">Reproducir Música 🎶</button>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="https://cdn.pixabay.com/audio/2022/10/18/audio_87b5c62b1b.mp3" type="audio/mpeg">
+</audio>
+
+<div id="finalMessage">
+  💖 Ana y Vishal 💖<br><br>
+  Cada corazón que atrapé fue para ti…<br>
+  Así como en la vida, te elijo una y otra vez ❤️<br><br>
+  Eres mi para siempre 🥹💍<br><br>
+  <button onclick="restartGame()" style="padding:10px 20px;border:none;border-radius:15px;background:#ff5e78;color:white;font-size:16px;">
+    Jugar de Nuevo 💕
+  </button>
+</div>
+
+<script>
+const basket = document.getElementById("basket");
+const scoreEl = document.getElementById("score");
+const complimentEl = document.getElementById("compliment");
+const finalMessage = document.getElementById("finalMessage");
+
+let score = 0;
+
+// Compliments in Spanish
+const compliments = [
+  "Eres mi rayo de sol ☀️",
+  "Tu sonrisa me derrite 💕",
+  "Eres mi para siempre 💍",
+  "Mi corazón late por ti ❤️",
+  "Eres mi sueño 🌙",
+  "Me completas 💖",
+  "Eres mi princesa 👑",
+  "Mi amor, mi mundo 🌍"
+];
+
+function playMusic() {
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.7;
+  music.play().catch(err => console.log("Música bloqueada:", err));
+  document.getElementById("playBtn").style.display = "none";
+}
+
+function createHeart() {
+  if (finalMessage.style.display === "block") return;
+
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "💖";
+  heart.style.left = Math.random() * (window.innerWidth - 30) + "px"; // keep inside screen
+  document.body.appendChild(heart);
+
+  const fallInterval = setInterval(() => {
+    const heartRect = heart.getBoundingClientRect();
+    const basketRect = basket.getBoundingClientRect();
+
+    if (
+      heartRect.bottom >= basketRect.top &&
+      heartRect.left <= basketRect.right &&
+      heartRect.right >= basketRect.left
+    ) {
+      heart.remove();
+      clearInterval(fallInterval);
+      catchHeart(heartRect.left, heartRect.top);
+    }
+
+    if (heartRect.top > window.innerHeight) {
+      heart.remove();
+      clearInterval(fallInterval);
+    }
+  }, 50);
+}
+
+function catchHeart(x, y) {
+  score++;
+  scoreEl.innerText = "Puntaje: " + score;
+
+  basket.classList.add("basket-hit");
+  setTimeout(() => basket.classList.remove("basket-hit"), 150);
+
+  createBurst(x, y);
+
+  const randomCompliment = compliments[Math.floor(Math.random() * compliments.length)];
+  complimentEl.innerText = randomCompliment;
+
+  if (score >= 15) {
+    finalMessage.style.display = "block";
+    document.querySelectorAll(".heart").forEach(h => h.remove());
+  }
+}
+
+function createBurst(x, y) {
+  for (let i = 0; i < 6; i++) {
+    const spark = document.createElement("div");
+    spark.className = "spark";
+    spark.style.left = x + "px";
+    spark.style.top = y + "px";
+    spark.style.setProperty('--x', `${Math.random()*80-40}px`);
+    spark.style.setProperty('--y', `${Math.random()*80-40}px`);
+    document.body.appendChild(spark);
+    setTimeout(() => spark.remove(), 500);
+  }
+}
+
+function restartGame() {
+  score = 0;
+  scoreEl.innerText = "Puntaje: 0";
+  complimentEl.innerText = "";
+  finalMessage.style.display = "none";
+}
+
+// Basket movement with boundaries
+document.addEventListener("mousemove", e => {
+  let newX = e.clientX - basket.offsetWidth / 2;
+  newX = Math.max(0, Math.min(window.innerWidth - basket.offsetWidth, newX));
+  basket.style.left = newX + "px";
+});
+
+document.addEventListener("touchmove", e => {
+  let newX = e.touches[0].clientX - basket.offsetWidth / 2;
+  newX = Math.max(0, Math.min(window.innerWidth - basket.offsetWidth, newX));
+  basket.style.left = newX + "px";
+});
+
+// Create hearts periodically
+setInterval(createHeart, 1200);
+</script>
+
+</body>
+</html>
