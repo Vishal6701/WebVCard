@@ -6,91 +6,50 @@
 <title>Happy Birthday Nikki 🎂</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:linear-gradient(135deg,#ffd6e7,#fff3c4,#d8f8ff);
+    margin:0;
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     overflow:hidden;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#ffd6e7,#fff5c3,#d8f8ff);
 }
 
 .card{
-    width:360px;
-    background:white;
-    border-radius:25px;
+    width:320px;
     padding:25px;
     text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,.2);
-    animation:pop .8s ease;
-    position:relative;
-    z-index:10;
+    background:white;
+    border-radius:25px;
+    box-shadow:0 15px 35px #aaa;
+    animation:pop .8s;
 }
 
 @keyframes pop{
-from{transform:scale(.5);opacity:0;}
-to{transform:scale(1);opacity:1;}
+from{transform:scale(.5)}
+to{transform:scale(1)}
 }
 
 .gift{
-    font-size:70px;
+    font-size:65px;
     cursor:pointer;
     animation:bounce 1.5s infinite;
 }
 
 @keyframes bounce{
-50%{transform:translateY(-10px);}
+50%{transform:translateY(-10px)}
 }
 
 h2{
-    margin-top:10px;
     color:#ff5d8f;
 }
 
-.message{
+.msg{
     display:none;
-    margin-top:15px;
     color:#555;
     line-height:1.6;
-    animation:fade 1s;
-}
-
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-button{
-    margin-top:20px;
-    padding:12px 24px;
-    border:none;
-    border-radius:20px;
-    background:#ff6f91;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-}
-
-.reward{
-    display:none;
-    margin-top:18px;
-    color:#ff4f7b;
-    font-weight:bold;
-}
-
-.balloon{
-    position:absolute;
-    bottom:-100px;
-    font-size:35px;
-    animation:float linear infinite;
-}
-
-@keyframes float{
-from{transform:translateY(0);}
-to{transform:translateY(-120vh);}
 }
 
 .heart{
@@ -99,121 +58,108 @@ to{transform:translateY(-120vh);}
 }
 
 @keyframes beat{
-50%{transform:scale(1.3);}
+50%{transform:scale(1.3)}
 }
 
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:0;
+    border-radius:20px;
+    background:#ff6f91;
+    color:white;
+    cursor:pointer;
+}
+
+.reward{
+    display:none;
+    color:#ff5d8f;
+    margin-top:15px;
+}
+
+.balloon{
+    position:absolute;
+    bottom:-50px;
+    animation:fly 7s linear;
+    font-size:35px;
+}
+
+@keyframes fly{
+to{transform:translateY(-110vh)}
+}
 </style>
+
 </head>
 
 <body>
 
 <div class="card">
 
-<div id="gift" class="gift" onclick="openGift()">🎁</div>
+<div class="gift" id="gift" onclick="openCard()">🎁</div>
 
-<h2>Tap the Gift Nikki! 😄</h2>
+<h2>Tap the Gift Nikki 😄</h2>
 
-<div class="message" id="msg">
+<div class="msg" id="msg">
 
 <div class="heart">💖</div>
 
 <h2>Happy Birthday Nikki! 🎂</h2>
 
 <p>
-
-<b>System Scan Complete...</b> 🤖
-
-<br><br>
-
-Name: <b>Nikki</b> 💛<br>
-Age: <b>32</b> ✅<br>
-Adult Mode: ❌ Still Loading... 😂<br>
-Random Thoughts: 100% 🤪<br>
-Cuteness Level: ERROR 💖<br>
-Chaos Energy: Unlimited ♾️
+<b>System Scan Completed 🤖</b>
 
 <br><br>
 
-✨ <b>Level 32 Unlocked!</b> ✨
+Name: Nikki 💛<br>
+Age: 32 (but inner child still active 😄)<br>
+Smile Level: 100% ✨<br>
+Fun Mode: Always ON 🌈
 
 <br><br>
 
-🏆 Achievements Earned:
-
-<br>
-🧸 Professional Goofball<br>
-🎈 Tiny Happiness Collector<br>
-🍰 Cake Destroyer Expert
+🎮 <b>Level 32 Unlocked!</b>
 
 <br><br>
 
-🚀 <b>Level 33 Preview:</b>
-
-<br>
-
-Coming soon...
-
-<br>
-✨ More smiles<br>
-✨ More adventures<br>
-✨ More random funny moments
+New achievements:<br>
+🎈 Finding happiness in little things<br>
+🍰 Cake appreciation expert<br>
+😄 Making moments more fun
 
 <br><br>
 
-⚠️ Warning:<br>
-"Become a Serious Adult" update detected...
-
-<br>
-
-<b>Installation Failed Successfully. 😂</b>
+⚠️ Adult Mode Update Found...<br>
+❌ Installation failed.<br>
+Reason: Too much cuteness detected 😂
 
 <br><br>
 
-We've only met twice, but you've already earned the title:
-
-<br>
-
-<b>"Cute Little Chaos Generator" 🐣</b>
+We've only met a couple of times,
+but you already seem like someone who brings a little extra happiness around.
 
 <br><br>
 
-Never lose that playful spark, Nikki. 🌸
+Keep smiling and never lose your fun side 🌸
 
 </p>
 
-<button onclick="reward()">🎁 Claim Birthday Reward</button>
+<button onclick="reward()">🎁 Birthday Reward</button>
 
 <div class="reward" id="reward">
-
-🎉 Reward Successfully Claimed!
-
-<br><br>
-
-😊 +100 Happiness
-
-<br>
-🍰 +1 Extra Cake Slice
-
-<br>
-💛 +∞ Smiles
-
-<br>
-🌈 +365 New Memories
-
-<br><br>
-
-Happy Birthday Nikki! 🎂✨
-
+🎉 Reward Unlocked!<br><br>
+😊 +100 Happiness<br>
+🍰 Unlimited Cake Happiness<br>
+💖 +∞ Smiles<br><br>
+Happy Birthday Nikki! ✨
 </div>
 
 </div>
-
 </div>
 
 
 <script>
 
-function openGift(){
+function openCard(){
 document.getElementById("gift").innerHTML="🎊";
 document.querySelector(".card h2").style.display="none";
 document.getElementById("msg").style.display="block";
@@ -224,18 +170,15 @@ document.getElementById("reward").style.display="block";
 }
 
 setInterval(()=>{
-
 let b=document.createElement("div");
 b.className="balloon";
-b.innerHTML=["🎈","🎉","💖","✨","🎂"][Math.floor(Math.random()*5)];
+b.innerHTML=["🎈","💖","✨","🎂"][Math.floor(Math.random()*4)];
 b.style.left=Math.random()*100+"vw";
-b.style.animationDuration=(5+Math.random()*5)+"s";
-
 document.body.appendChild(b);
 
-setTimeout(()=>b.remove(),10000);
+setTimeout(()=>b.remove(),7000);
 
-},500);
+},700);
 
 </script>
 
