@@ -1,1 +1,122 @@
+<html lang="en">  
+<head>  
+<meta charset="utf-8">  
+<meta name="viewport" content="width=device-width,initial-scale=1">  
+<title>Heway's Wrist Recovery Mission 💜</title>  
+<style>  
+*{box-sizing:border-box}body{margin:0;min-height:100vh;overflow:hidden;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:linear-gradient(135deg,#f3edff,#eaf9ff,#fff4fb);color:#45404d;display:flex;align-items:center;justify-content:center}  
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}.bubble{position:absolute;border-radius:50%;opacity:.45;animation:float 8s infinite ease-in-out}.b1{width:90px;height:90px;background:#d9c7ff;left:8%;top:12%}.b2{width:55px;height:55px;background:#c8eaff;right:10%;top:22%;animation-delay:1s}.b3{width:75px;height:75px;background:#ffd8ec;left:75%;bottom:8%;animation-delay:2s}  
+@keyframes float{50%{transform:translateY(-25px) rotate(15deg)}}.intro{text-align:center;padding:28px;z-index:3;animation:pop .8s ease}.gift{font-size:78px;animation:wiggle 1.5s infinite}  
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}h1{color:#7655a8;margin:10px 0;font-size:clamp(32px,8vw,52px)}.intro p{color:#777;font-size:17px}  
+button{border:0;border-radius:999px;padding:14px 24px;font-size:16px;font-weight:800;cursor:pointer;background:#8062b8;color:white;box-shadow:0 9px 25px #8062b833;transition:.2s}button:hover{transform:translateY(-3px) scale(1.03)}  
+.card{display:none;z-index:3;width:min(92vw,520px);max-height:92vh;overflow:auto;padding:28px;border-radius:30px;text-align:center;background:#ffffffee;box-shadow:0 25px 70px #5e477522;animation:cardIn .8s ease}  
+@keyframes cardIn{from{opacity:0;transform:scale(.7) rotate(-4deg)}to{opacity:1;transform:scale(1)}}.wrist{position:relative;width:230px;height:105px;margin:5px auto 12px;animation:wristShake 2.4s infinite}.arm{position:absolute;width:175px;height:42px;background:#f1c7a8;border-radius:25px;top:31px;left:8px;transform:rotate(-8deg)}.hand{position:absolute;width:72px;height:55px;background:#f1c7a8;border-radius:28px 25px 30px 35px;right:2px;top:18px;transform:rotate(-8deg)}.bandage{position:absolute;z-index:2;width:70px;height:58px;border-radius:13px;background:repeating-linear-gradient(45deg,#fff,#fff 8px,#d9d9d9 9px,#d9d9d9 11px);border:3px solid #ccc;right:43px;top:21px;transform:rotate(-8deg);box-shadow:0 4px 8px #0002}.crack{position:absolute;z-index:4;font-size:31px;right:68px;top:30px;transform:rotate(10deg)}  
+@keyframes wristShake{0%,100%{transform:rotate(0)}45%{transform:rotate(-5deg)}55%{transform:rotate(5deg)}}.subtitle{color:#9b8aa8;margin-bottom:18px}.message{font-size:16px;line-height:1.65}.highlight{color:#7655a8;font-weight:800}.alert{margin:20px 0;padding:15px;border-radius:20px;background:#f5efff;border:2px dashed #b6a0db;animation:pulse 2s infinite}  
+@keyframes pulse{50%{transform:scale(1.02)}}.joke{min-height:48px;margin-top:13px;color:#7655a8;font-weight:700;transition:.25s}.mission{text-align:left;background:#f4fbff;padding:18px;border-radius:20px;margin-top:20px}.mission h2{margin:0 0 10px;color:#5e82a3;font-size:21px}.mission li{margin:8px 0}.progress{margin-top:15px;height:14px;background:#e8e8e8;border-radius:20px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,#9d7ee0,#70c4dc);transition:2s}.final{margin-top:22px;color:#7655a8;font-size:21px;font-weight:900}  
+.floatEmoji{position:fixed;bottom:-40px;animation:rise 7s linear forwards;pointer-events:none;z-index:1}@keyframes rise{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}.confetti{position:fixed;top:-30px;animation:fall 3s linear forwards;z-index:10}@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}.shake{animation:screenShake .35s}@keyframes screenShake{25%{transform:translateX(-5px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}@media(max-width:450px){.card{padding:23px 18px}}  .bone-game{margin-top:24px;padding:20px;border-radius:24px;background:linear-gradient(135deg,#fff7fb,#f3efff);border:2px dashed #b6a0db}
+.bone-game h2{margin:0 0 8px;color:#7655a8;font-size:21px}.bone-game p{font-size:14px;line-height:1.55}
+.game-area{height:180px;margin:12px auto;position:relative;border-radius:20px;background:#fff;overflow:hidden;border:1px solid #eee}
+.bone-piece{position:absolute;font-size:58px;top:58px;z-index:3;filter:drop-shadow(0 5px 4px #0002)}
+.left-bone{left:24px;transform:rotate(-28deg)}.right-bone{right:24px;transform:rotate(28deg)}
+.thread{position:absolute;z-index:4;width:90px;height:8px;background:#9b72d0;border-radius:10px;left:calc(50% - 45px);top:88px;cursor:grab;box-shadow:0 0 10px #9b72d077}
+.thread:before,.thread:after{content:"";position:absolute;width:17px;height:17px;border:4px solid #7655a8;border-radius:50%;background:white;top:-8px}.thread:before{left:-5px}.thread:after{right:-5px}
+.target{position:absolute;left:50%;top:70px;transform:translateX(-50%);font-size:45px;opacity:.25}
+.game-hint{color:#7655a8;font-weight:700;font-size:14px;min-height:22px}.boom{display:none;font-size:42px;font-weight:900;color:#7655a8;animation:boom .8s ease}.boom span{font-size:17px}
+@keyframes boom{0%{transform:scale(.2) rotate(-15deg);opacity:0}60%{transform:scale(1.35) rotate(5deg)}100%{transform:scale(1);opacity:1}}
+.reset-btn{margin-top:10px;padding:9px 16px;font-size:13px;background:#eee7ff;color:#7655a8;box-shadow:none}
+.connected .left-bone{animation:joinLeft .7s forwards}.connected .right-bone{animation:joinRight .7s forwards}.connected .thread{animation:threadJoin .7s forwards}
+@keyframes joinLeft{to{left:calc(50% - 55px);transform:rotate(0)}}@keyframes joinRight{to{right:calc(50% - 55px);transform:rotate(0)}}@keyframes threadJoin{to{width:25px;left:calc(50% - 12px);opacity:0}}
+.shakeGame{animation:gameShake .4s}@keyframes gameShake{25%{transform:translateX(-7px)}50%{transform:translateX(7px)}75%{transform:translateX(-4px)}}
+</style>
 
+</head>  
+<body>  
+<div class="bg"><div class="bubble b1"></div><div class="bubble b2"></div><div class="bubble b3"></div></div>  <section class="intro" id="intro">  
+<div class="gift">🎁</div><h1>Hey Heway... 👀</h1>  
+<p>Emergency recovery package detected.</p>  
+<button onclick="openCard()">💜 Open the Card</button>  
+</section>  <main class="card" id="card">  
+<div class="wrist"><div class="arm"></div><div class="hand"></div><div class="bandage"></div><div class="crack">💥</div></div>  
+<h1>Heway's Wrist.exe 💀</h1>  
+<div class="subtitle">Status: Currently under maintenance 🛠️😂</div>  <div class="message">  
+Dear Heway,<br><br>  
+Apparently your wrist decided it needed a <span class="highlight">vacation</span>. 😭😂<br><br>  
+Normal people: “I need some rest.”<br>  
+Heway: <b>“Let's fracture the wrist and make it memorable.”</b> 💀  
+</div>  <div class="alert">🚨 <b>OFFICIAL MEDICAL-ISH ANNOUNCEMENT</b> 🚨<br>  
+The wrist is temporarily unavailable.<br>Please do not reboot, overuse, or challenge it to a race.</div>  <button onclick="joke()">😂 Activate Emergency Entertainment</button>
+
+<div class="joke" id="joke">Press the button. Your wrist needs entertainment too. 😭</div>  <div class="mission"><h2>🩹 Heway Recovery Mission</h2>  
+<ul><li>Rest properly. No superhero auditions. 🦸‍♀️</li>  
+<li>Follow your doctor's instructions. 👩‍⚕️</li>  
+<li>Accept snacks as a legitimate treatment. 🍫</li>  
+<li>Keep the <b>moody mode</b> under control. 😤😂</li></ul>  
+<div>🌱 Recovery loading...</div><div class="progress"><div class="fill" id="fill"></div></div></div>  <div class="bone-game">  
+  <h2>🦴 Operation: Fix Heway's Wrist</h2>  
+  <p>Uh-oh... the bone pieces escaped! 😭<br>  
+  <b>Drag the purple thread</b> from the left bone to the right bone and reunite them!</p>    <div class="game-area" id="gameArea">  
+    <div class="bone-piece left-bone" id="leftBone">🦴</div>  
+    <div class="bone-piece right-bone" id="rightBone">🦴</div>  
+    <div class="thread" id="thread"></div>  
+    <div class="target">⭕</div>  
+  </div>    <div class="game-hint" id="gameHint">🧵 Grab the thread and pull it toward the other bone!</div>  
+  <div class="boom" id="boom">💥<br><span>WRIST RECONNECTED!</span> 🎉</div>  
+  <button class="reset-btn" onclick="resetBoneGame()">🔄 Break It Again 😂</button>  
+</div>  <div class="final">Get well soon, Heway! 🌸💜</div>  
+<p>One healthy wrist coming right up... eventually. 😂🫶🏻</p>  
+</main>  <script>  
+const jokes=[  
+"🚨 Doctor's report: 99% of the problem is that Heway is too dramatic. 😂",  
+"🐒 Shy Monkey has been ordered to rest. Negotiations failed.",  
+"💀 Wrist.exe has stopped responding. Please try again after proper rest.",  
+"😤 Moody Mode detected. Sending emergency snacks immediately.",  
+"🌶️ Important: No chilli-related Latina transformations during recovery. 😂",  
+"🫶🏻 Prescription: rest, patience, snacks and one annoying friend."  
+];  
+let i=0;  
+function openCard(){document.getElementById('intro').style.display='none';document.getElementById('card').style.display='block';document.getElementById('fill').style.width='82%';confetti();hearts()}  
+function joke(){const e=document.getElementById('joke');e.style.opacity=0;document.body.classList.remove('shake');void document.body.offsetWidth;document.body.classList.add('shake');setTimeout(()=>{e.textContent=jokes[i++%jokes.length];e.style.opacity=1},180)}  
+function confetti(){const a=['💜','🌸','✨','😂','🫶🏻','🎉','🩹'];for(let n=0;n<55;n++){let x=document.createElement('div');x.className='confetti';x.textContent=a[Math.floor(Math.random()*a.length)];x.style.left=Math.random()*100+'vw';x.style.fontSize=(12+Math.random()*18)+'px';x.style.animationDelay=Math.random()*.7+'s';document.body.appendChild(x);setTimeout(()=>x.remove(),4000)}}  
+function hearts(){const a=['💜','🌸','✨','🫶🏻','🐒'];setInterval(()=>{let x=document.createElement('div');x.className='floatEmoji';x.textContent=a[Math.floor(Math.random()*a.length)];x.style.left=Math.random()*100+'vw';x.style.fontSize=(18+Math.random()*20)+'px';x.style.animationDuration=(5+Math.random()*5)+'s';document.body.appendChild(x);setTimeout(()=>x.remove(),10000)},700)}  
+  
+let dragging=false, startX=0, startY=0;  
+const area=()=>document.getElementById('gameArea');  
+const thread=()=>document.getElementById('thread');  
+function pointerStart(e){  
+ dragging=true; const p=e.touches?e.touches[0]:e;  
+ const r=area().getBoundingClientRect(); startX=p.clientX-r.left; startY=p.clientY-r.top;  
+}  
+function pointerMove(e){  
+ if(!dragging)return; e.preventDefault(); const p=e.touches?e.touches[0]:e;  
+ const r=area().getBoundingClientRect(); let x=p.clientX-r.left, y=p.clientY-r.top;  
+ const t=thread(); t.style.left=(x-45)+'px'; t.style.top=(y-4)+'px';  
+ document.getElementById('gameHint').textContent='🧵 Keep going... reconnect those bones! 😂';  
+}  
+function pointerEnd(){  
+ if(!dragging)return; dragging=false;  
+ const t=thread(), r=area().getBoundingClientRect();  
+ const tr=t.getBoundingClientRect(), ar=area().getBoundingClientRect();  
+ const cx=tr.left+tr.width/2, cy=tr.top+tr.height/2;  
+ const targetX=ar.left+ar.width/2, targetY=ar.top+ar.height/2;  
+ if(Math.hypot(cx-targetX,cy-targetY)<55){  
+   area().classList.add('connected');  
+   document.getElementById('gameHint').textContent='🎉 SUCCESS! The wrist has been professionally repaired by... you. 😂';  
+   document.getElementById('boom').style.display='block';  
+   confetti();  
+ }else{  
+   document.getElementById('gameHint').textContent='😂 Missed! Try dragging the thread to the middle.';  
+   t.style.left='calc(50% - 45px)'; t.style.top='88px';  
+ }  
+}  
+function resetBoneGame(){  
+ area().classList.remove('connected'); document.getElementById('boom').style.display='none';  
+ const t=thread();t.style.left='calc(50% - 45px)';t.style.top='88px';  
+ document.getElementById('gameHint').textContent='🧵 Grab the thread and pull it toward the other bone!';  
+}  
+window.addEventListener('load',()=>{  
+ const t=thread(); t.addEventListener('mousedown',pointerStart); t.addEventListener('touchstart',pointerStart,{passive:false});  
+ window.addEventListener('mousemove',pointerMove);window.addEventListener('touchmove',pointerMove,{passive:false});  
+ window.addEventListener('mouseup',pointerEnd);window.addEventListener('touchend',pointerEnd);  
+});  
+</script>  </body>  
+</html>"
